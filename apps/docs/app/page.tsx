@@ -18,7 +18,7 @@ export default function Home() {
           </ul>
         </nav>
       </header>
-      <main className={styles.main}>Contenido de la Home</main>
+      <main className={styles.main}>Main de la Home</main>
       <footer className={styles.footer}>
         <a
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
