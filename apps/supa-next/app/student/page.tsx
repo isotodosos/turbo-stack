@@ -1,8 +1,8 @@
+import FormStudent from "@/components/FormStudent";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import Students from "@/components/Students";
 
-export default async function ProtectedPage() {
+export default async function StudentPage() {
   const supabase = createClient();
 
   const {
@@ -13,5 +13,9 @@ export default async function ProtectedPage() {
     return redirect("/login");
   }
 
-  return <Students />;
+  return (
+    <div className="text-center py-l">
+      <FormStudent />
+    </div>
+  );
 }

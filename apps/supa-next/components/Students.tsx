@@ -1,6 +1,7 @@
 import { Loading } from "@/components/Loading";
 import { createClient } from "@/utils/supabase/server";
 import { Suspense } from "react";
+import CreateStudent from "./CreateStudent";
 type Student = {
   id: string;
   created: string;
@@ -13,12 +14,15 @@ export default async function Students() {
   const { data: students } = await supabase.from("students").select();
 
   return (
-    <Suspense fallback={<Loading students={students} />}>
-      <div className="flex flex-col justify-between mx-20 pt-8">
+    <div className="flex flex-col justify-between mx-20 pt-8">
+      <div className="flex items-center justify-between w-full">
         <h1 className="text-center mb-8 text-2xl bold">
           Listado de estudiantes
         </h1>
-        <div className="border-slate-400 border-[2px] rounded shadow-lg">
+        <CreateStudent />
+      </div>
+      <div className="border-slate-400 border-[2px] rounded shadow-lg">
+        <Suspense fallback={<Loading students={students} />}>
           {students?.map((student: Student, i: number) => (
             <div key={student.id} className="flex flex-col gap-4">
               <div
@@ -35,15 +39,21 @@ export default async function Students() {
                   </ul>
                 </div>
                 <div className="p-8 flex gap-6 bg-slate-100">
-                  <button className="hover:text-blue-500">M</button>
-                  <button className="hover:text-blue-500">E</button>
-                  <button className="hover:text-blue-500">D</button>
+                  <button className="text-purple-950 hover:text-purple-600 w-[34px] h-[36px] rounded-full border-[1px] border-slate-100 hover:border-purple-950">
+                    M
+                  </button>
+                  <button className="text-purple-950 hover:text-purple-600 w-[34px] h-[36px] rounded-full border-[1px] border-slate-100 hover:border-purple-950">
+                    E
+                  </button>
+                  <button className="text-purple-950 hover:text-purple-600 w-[34px] h-[36px] rounded-full border-[1px] border-slate-100 hover:border-purple-950">
+                    D
+                  </button>
                 </div>
               </div>
             </div>
           ))}
-        </div>
+        </Suspense>
       </div>
-    </Suspense>
+    </div>
   );
 }
