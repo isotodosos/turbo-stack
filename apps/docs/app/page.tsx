@@ -1,22 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
+import Navegator from "./components/Navigator/navegator";
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <nav>
-          <ul>
-            <li>
-              <Link href="/principal">Principal</Link>
-            </li>
-            <li>
-              <Link href="/secundaria">Secundaria</Link>
-            </li>
-          </ul>
-        </nav>
+        <Navegator />
       </header>
       <main className={styles.main}>Main de la Home</main>
       <footer className={styles.footer}>
